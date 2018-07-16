@@ -8,7 +8,7 @@ args = sys.argv
 
 doc = docx.Document(args[1])
 
-illegal_line = re.compile(r'[０-９ａ-ｚＡ-Ｚ]')
+illegal_line = re.compile(r'[０-９ａ-ｚＡ-Ｚ　！”＃＄％＆｀（）＊＋ー：；＜＞＝？]')
 
 for doc_paagraphs in doc.paragraphs:
     match = illegal_line.search(doc_paagraphs.text)
