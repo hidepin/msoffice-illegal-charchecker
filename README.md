@@ -1,0 +1,1 @@
+# msoffice-illegal-charchecker
