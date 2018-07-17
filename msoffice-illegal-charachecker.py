@@ -19,5 +19,5 @@ if __name__ == '__main__':
     args = sys.argv
     base, ext = os.path.splitext(args[1])
 
-    if ext == '.docx':
+    if ext == '.docx' or ext == '.doc':
         check_docx(args[1])
