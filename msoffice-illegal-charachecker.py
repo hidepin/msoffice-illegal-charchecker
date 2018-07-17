@@ -5,17 +5,19 @@ import os
 import re
 import docx
 
-args = sys.argv
 illegal_chars = '[０-９ａ-ｚＡ-Ｚ　！”＃＄％＆｀（）＊＋：；＜＞＝？]'
 
-base, ext = os.path.splitext(args[1])
-
-if ext == '.docx':
-    doc = docx.Document(args[1])
-
+def check_docx(filename):
+    doc = docx.Document(filename)
     illegal_line = re.compile(r'{}'.format(illegal_chars))
-
     for doc_paagraphs in doc.paragraphs:
         match = illegal_line.search(doc_paagraphs.text)
         if match != None:
             print(args[1] + "," + re.sub(r'({})'.format(illegal_chars), r'[\1]', doc_paagraphs.text))
+
+if __name__ == '__main__':
+    args = sys.argv
+    base, ext = os.path.splitext(args[1])
+
+    if ext == '.docx':
+        check_docx(args[1])
