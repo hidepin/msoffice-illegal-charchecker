@@ -8,9 +8,9 @@ import docx
 illegal_chars = '[０-９ａ-ｚＡ-Ｚ　！”＃＄％＆｀（）＊＋：；＜＞＝？]'
 
 def check_docx(filename):
-    doc = docx.Document(filename)
+    docx = docx.Document(filename)
     illegal_line = re.compile(r'{}'.format(illegal_chars))
-    for doc_paagraphs in doc.paragraphs:
+    for doc_paagraphs in docx.paragraphs:
         match = illegal_line.search(doc_paagraphs.text)
         if match != None:
             print(args[1] + "," + re.sub(r'({})'.format(illegal_chars), r'[\1]', doc_paagraphs.text))
